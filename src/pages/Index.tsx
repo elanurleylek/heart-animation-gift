@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { Heart, Sparkles } from 'lucide-react';
 
@@ -128,7 +127,7 @@ const Index = () => {
                 }}
               >
                 <img
-                  src="https://cataas.com/cat/cute/says/Beni%20Tikla!"
+                  src="https://placekitten.com/400/400"
                   alt="Sevimli Kedi"
                   className="w-48 h-48 mx-auto object-cover rounded-lg shadow-lg"
                 />
