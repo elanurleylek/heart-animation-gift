@@ -23,6 +23,8 @@ const Index = () => {
   const [hearts, setHearts] = useState<React.ReactNode[]>([]);
   const [showMessage, setShowMessage] = useState(false);
   const [showCongrats, setShowCongrats] = useState(false);
+  const [catPosition, setCatPosition] = useState({ x: 0, y: 0 });
+  const [clickAttempts, setClickAttempts] = useState(0);
 
   useEffect(() => {
     // Generate initial floating hearts
@@ -75,6 +77,17 @@ const Index = () => {
     setHearts(prev => [...prev, ...celebrationHearts]);
   };
 
+  const handleCatMove = () => {
+    if (clickAttempts < 5) {
+      const newX = Math.random() * 200 - 100; // -100 to 100
+      const newY = Math.random() * 200 - 100; // -100 to 100
+      setCatPosition({ x: newX, y: newY });
+      setClickAttempts(prev => prev + 1);
+    } else {
+      handleCatClick();
+    }
+  };
+
   return (
     <div 
       className="relative min-h-screen heart-background overflow-hidden"
@@ -108,16 +121,21 @@ const Index = () => {
             {/* Interactive Cat Section */}
             <div className="mt-8 relative">
               <button
-                onClick={handleCatClick}
-                className="relative group transform transition-transform hover:scale-105"
+                onClick={handleCatMove}
+                className="relative group transform transition-all duration-300 hover:scale-105"
+                style={{
+                  transform: `translate(${catPosition.x}px, ${catPosition.y}px)`,
+                }}
               >
                 <img
-                  src="https://cataas.com/cat/cute/says/Love%20You"
+                  src="https://cataas.com/cat/cute/says/Beni%20Tikla!"
                   alt="Sevimli Kedi"
-                  className="w-48 h-48 mx-auto object-contain rounded-lg shadow-lg"
+                  className="w-48 h-48 mx-auto object-cover rounded-lg shadow-lg"
                 />
                 <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                  <p className="text-primary font-medium text-sm">Benim sonsuza kadar sevgilim olur musun?</p>
+                  <p className="text-primary font-medium text-sm">
+                    {clickAttempts < 5 ? 'Yakalayamadın! 😋' : 'Benim sonsuza kadar sevgilim olur musun?'}
+                  </p>
                 </div>
               </button>
             </div>
