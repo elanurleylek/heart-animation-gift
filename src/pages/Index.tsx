@@ -112,9 +112,9 @@ const Index = () => {
                 className="relative group transform transition-transform hover:scale-105"
               >
                 <img
-                  src="https://raw.githubusercontent.com/loveable-emoji/lovely-cats/main/cat1.png"
+                  src="https://cataas.com/cat/cute/says/Love%20You"
                   alt="Sevimli Kedi"
-                  className="w-48 h-48 mx-auto object-contain"
+                  className="w-48 h-48 mx-auto object-contain rounded-lg shadow-lg"
                 />
                 <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
                   <p className="text-primary font-medium text-sm">Benim sonsuza kadar sevgilim olur musun?</p>
