@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { Heart, Sparkles } from 'lucide-react';
 
@@ -27,7 +26,6 @@ const Index = () => {
   const [clickAttempts, setClickAttempts] = useState(0);
 
   useEffect(() => {
-    // Generate initial floating hearts
     const initialHearts = Array.from({ length: 20 }, (_, i) => (
       <FloatingHeart
         key={i}
@@ -39,7 +37,6 @@ const Index = () => {
     ));
     setHearts(initialHearts);
 
-    // Show message with delay for animation
     setTimeout(() => setShowMessage(true), 500);
   }, []);
 
@@ -64,7 +61,6 @@ const Index = () => {
 
   const handleCatClick = () => {
     setShowCongrats(true);
-    // Generate extra hearts for celebration
     const celebrationHearts = Array.from({ length: 10 }, (_, i) => (
       <FloatingHeart
         key={`celebration-${i}`}
@@ -79,8 +75,8 @@ const Index = () => {
 
   const handleCatMove = () => {
     if (clickAttempts < 5) {
-      const newX = Math.random() * 200 - 100; // -100 to 100
-      const newY = Math.random() * 200 - 100; // -100 to 100
+      const newX = Math.random() * 200 - 100;
+      const newY = Math.random() * 200 - 100;
       setCatPosition({ x: newX, y: newY });
       setClickAttempts(prev => prev + 1);
     } else {
@@ -118,7 +114,6 @@ const Index = () => {
               fill="currentColor"
             />
 
-            {/* Interactive Cat Section */}
             <div className="mt-8 relative">
               <button
                 onClick={handleCatMove}
@@ -129,14 +124,13 @@ const Index = () => {
               >
                 <div className="w-48 h-48 mx-auto bg-orange-100 rounded-lg shadow-lg overflow-hidden">
                   <img 
-                    src="/cat-image.jpg" 
+                    src="https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
                     alt="Sevimli Kedi"
                     className="w-full h-full object-cover"
                     onError={(e) => {
-                      // Fallback to a reliable cat image service if the local image fails
                       const target = e.target as HTMLImageElement;
-                      target.onerror = null; // Prevent infinite error loops
-                      target.src = "https://robohash.org/cat?set=set4"; // Robohash provides reliable cat images
+                      target.onerror = null;
+                      target.src = "https://images.unsplash.com/photo-1582562124811-c09040d0a901?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
                     }}
                   />
                 </div>
@@ -148,7 +142,6 @@ const Index = () => {
               </button>
             </div>
 
-            {/* Congratulatory Message */}
             {showCongrats && (
               <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm animate-fade-in">
                 <div className="bg-white/90 p-8 rounded-2xl shadow-xl text-center space-y-4 animate-scale-in">
