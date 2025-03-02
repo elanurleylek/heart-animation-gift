@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import { Heart, Sparkles } from 'lucide-react';
 
@@ -126,11 +127,13 @@ const Index = () => {
                   transform: `translate(${catPosition.x}px, ${catPosition.y}px)`,
                 }}
               >
-                <img
-                  src="https://placekitten.com/400/400"
-                  alt="Sevimli Kedi"
-                  className="w-48 h-48 mx-auto object-cover rounded-lg shadow-lg"
-                />
+                <div className="w-48 h-48 mx-auto bg-orange-200 rounded-lg shadow-lg flex items-center justify-center overflow-hidden">
+                  <Heart 
+                    className="text-primary/90 animate-pulse" 
+                    size={100} 
+                    fill="currentColor"
+                  />
+                </div>
                 <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
                   <p className="text-primary font-medium text-sm">
                     {clickAttempts < 5 ? 'Yakalayamadın! 😋' : 'Benim sonsuza kadar sevgilim olur musun?'}
