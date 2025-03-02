@@ -127,11 +127,17 @@ const Index = () => {
                   transform: `translate(${catPosition.x}px, ${catPosition.y}px)`,
                 }}
               >
-                <div className="w-48 h-48 mx-auto bg-orange-200 rounded-lg shadow-lg flex items-center justify-center overflow-hidden">
-                  <Heart 
-                    className="text-primary/90 animate-pulse" 
-                    size={100} 
-                    fill="currentColor"
+                <div className="w-48 h-48 mx-auto bg-orange-100 rounded-lg shadow-lg overflow-hidden">
+                  <img 
+                    src="/cat-image.jpg" 
+                    alt="Sevimli Kedi"
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      // Fallback to a reliable cat image service if the local image fails
+                      const target = e.target as HTMLImageElement;
+                      target.onerror = null; // Prevent infinite error loops
+                      target.src = "https://robohash.org/cat?set=set4"; // Robohash provides reliable cat images
+                    }}
                   />
                 </div>
                 <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
